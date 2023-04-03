@@ -2,9 +2,11 @@ import React from 'react';
 import '../App.css';
 
 const Categories = () => (
-  <div className="cat-but">
-    <button type="button">Check status</button>
+  <div className="categoriy-list">
+    <h1>Categories</h1>
+    <button type="button">
+      Check Status
+    </button>
   </div>
 );
-
 export default Categories;
