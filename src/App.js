@@ -1,18 +1,22 @@
-/* eslint-disable import/no-extraneous-dependencies */
+import React, { PureComponent } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import './App.css';
-import Navbar from './components/links';
 import Books from './components/books';
+import './App.css';
 import Categories from './components/categories';
+import Links from './components/links';
 
-const App = () => (
-  <>
-    <Navbar />
-    <Routes>
-      <Route path="/" element={<Books />} />
-      <Route path="/categories" element={<Categories />} />
-    </Routes>
-  </>
-);
-
+class App extends PureComponent {
+  render() {
+    return (
+      <div>
+        <Routes>
+          <Route path="/" element={<Links />}>
+            <Route index element={<Books />} />
+            <Route path="categories" element={<Categories />} />
+          </Route>
+        </Routes>
+      </div>
+    );
+  }
+}
 export default App;
