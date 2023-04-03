@@ -1,18 +1,28 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
+import { FaRegUser } from 'react-icons/fa';
 import '../App.css';
 
-const Navbar = () => (
-  <nav className="nav-bar">
-    <h1>Bookstore</h1>
-    <ul>
-      <li>
-        <Link to="/" className="link"> Books </Link>
-        <Link to="/categories" className="link"> Categories </Link>
-      </li>
-    </ul>
-  </nav>
-);
+const Links = () => (
+  <header className="container">
+    <nav className="nave-bar">
+      <div className="nav-item">
+        <Link style={{ textDecoration: 'none' }} to="/">
+          <h1>Bookstore CMS</h1>
+        </Link>
+        <Link style={{ textDecoration: 'none' }} to="/">
+          <span className="nav-link">Books</span>
+        </Link>
+        <Link style={{ textDecoration: 'none' }} to="categories">
+          <span className="nav-link">Categories</span>
+        </Link>
+      </div>
+      <button type="button" className="user">
+        <FaRegUser color="blue" fontSize="30px" />
+      </button>
+    </nav>
+    <Outlet />
 
-export default Navbar;
+  </header>
+);
+export default Links;
