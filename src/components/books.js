@@ -1,28 +1,12 @@
 import React from 'react';
 import '../App.css';
+import AddnewBook from './addNewBook';
+import Book from './book';
 
 const Books = () => (
-  <div className="booksContainer">
-    <ul>
-      <li>
-        The Hunger Games
-        <span>Suzanne Collins</span>
-      </li>
-      <li>
-        Dune
-        <span>Frank Herbert</span>
-      </li>
-      <li>
-        Capital in the Twenty-First Century
-        <span>Suzanne Collins</span>
-      </li>
-    </ul>
-    <form>
-      <input type="text" placeholder="Book title..." />
-      <input type="text" placeholder="Book Author" />
-      <input type="submit" />
-    </form>
+  <div className="book-container">
+    <Book book={Book} />
+    <AddnewBook />
   </div>
 );
-
 export default Books;
