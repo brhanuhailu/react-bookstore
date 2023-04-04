@@ -1,85 +1,43 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+import { removeBook } from '../redux/books/booksSlice';
 import '../App.css';
 
-const Book = () => (
-  <div className="books">
-    <div className="book-content">
-      <div className="book-card">
-        <div className="book-detail">
-          <strong>Categories</strong>
-          <h3>Dungeons and Dragons</h3>
-          <p>JK Rowling</p>
-        </div>
-        <span className="btn-status">
-          <button type="button">Comments</button>
-          <button
-            className="remove-btn"
-            type="button"
-          >
-            Remove
-
-          </button>
-          <button type="button">Edit</button>
-        </span>
-      </div>
-      <div className="book-progress">
-        <div className="progress">
-          <div className="progress-bar" />
-        </div>
-        <div className="progress-info">
-          <p className="completed">
-            %
-          </p>
-          <span>Completed</span>
-        </div>
-        <div className="progress-status">
-          <p>Current Chapter</p>
+const Book = (props) => {
+  const { book } = props;
+  const dispatch = useDispatch();
+  return (
+    <div className="book-container">
+      {book.map((item) => (
+        <div key={item.id}>
+          <h3>{item.title}</h3>
+          <p>{item.author}</p>
           <span>
-            Chapter
-          </span>
-          <button type="button">Update Progress</button>
-        </div>
-      </div>
-    </div>
-    <div className="book-content">
-      <div className="book-card">
-        <div className="book-detail">
-          <strong>Categories</strong>
-          <h3>Dungeons and Dragons</h3>
-          <p>JK Rowling</p>
-        </div>
-        <span className="btn-status">
-          <button type="button">Comments</button>
-          <button
-            className="remove-btn"
-            type="button"
-          >
-            Remove
+            <button type="button">Comments</button>
+            <button
+              type="button"
+              onClick={() => dispatch(removeBook(item))}
+            >
+              Remove
 
-          </button>
-          <button type="button">Edit</button>
-        </span>
-      </div>
-      <div className="book-progress">
-        <div className="progress">
-          <div className="progress-bar" />
-        </div>
-        <div className="progress-info">
-          <p className="completed">
-            %
-          </p>
-          <span>Completed</span>
-        </div>
-        <div className="progress-status">
-          <p>Current Chapter</p>
-          <span>
-            Chapter
+            </button>
+            <button type="button">Edit</button>
           </span>
-          <button type="button">Update Progress</button>
         </div>
-      </div>
+      ))}
     </div>
+  );
+};
 
-  </div>
-);
+Book.propTypes = {
+  book: PropTypes.arrayOf(PropTypes.shape(
+    {
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+    },
+  )).isRequired,
+};
+
 export default Book;
