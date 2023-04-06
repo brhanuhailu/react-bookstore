@@ -13,7 +13,7 @@ const Book = (props) => {
         <div className="book-content" key={item.id}>
           <div className="book-card">
             <div className="book-detail">
-              <strong>{item.category}</strong>
+              <h4>{item.category}</h4>
               <h3>{item.title}</h3>
               <p>{item.author}</p>
             </div>
