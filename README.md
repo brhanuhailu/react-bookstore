@@ -67,7 +67,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link will release soon]()
+- [Live Demo Link ](https://react-bookstore-oxyg.onrender.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
