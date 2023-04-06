@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import '../App.css';
 import { addBook } from '../redux/books/booksSlice';
 
+const categories = ['action', 'Natural Science', 'Science Fiction', 'Poletics', 'Software Enginering', 'Design Science'];
 const AddnewBook = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const [category, setCategory] = useState('');
 
   const dispatch = useDispatch();
 
@@ -17,19 +20,28 @@ const AddnewBook = () => {
     setAuthor(e.target.value);
   };
 
-  const submitBookToStore = (title, author) => {
+  const handleCategory = (e) => {
+    setCategory(e.target.value);
+  };
+
+  const submitBookToStore = (title, author, category) => {
     if (!title || !author) return;
     const Newbook = {
       id: uuidv4(),
       title,
       author,
+      category,
+      complete: false,
+      chapter: 0,
     };
     dispatch(addBook(Newbook));
     setTitle('');
     setAuthor('');
+    setCategory('Action');
   };
   return (
     <div className="add-new-book">
+      <hr />
       <h1>Add New Book</h1>
       <form>
         <input
@@ -48,9 +60,16 @@ const AddnewBook = () => {
           value={author}
           required
         />
+        <select name="category" className="categories" id="category" value={category} onChange={handleCategory}>
+          {categories.map((item) => (
+            <option key={item} value={item}>
+              {item}
+            </option>
+          ))}
+        </select>
         <button
           type="submit"
-          onClick={() => submitBookToStore(title, author)}
+          onClick={() => submitBookToStore(title, author, category)}
         >
           Add Book
 
